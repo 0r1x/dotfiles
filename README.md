@@ -22,10 +22,6 @@ Everything here is intentionally simple:
 - behavior is explicit and easy to reason about
 
 The focus is on keeping the setup easy to understand and reproduce.
----
-
-## Structure
-
 
 ---
 
