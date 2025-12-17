@@ -1,0 +1,4 @@
+# Private/local-only
+private/
+*.local
+*.secret

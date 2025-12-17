@@ -1,0 +1,10 @@
+#compdef alacritty-theme
+
+_alacritty-theme() {
+  local -a themes
+
+  themes=( "$HOME/.config/alacritty/themes/themes/"*.toml(N:t:r) )
+
+  compadd -- "${themes[@]}"
+}
+

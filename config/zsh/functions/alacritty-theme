@@ -1,0 +1,22 @@
+alacritty-theme() {
+  local arg="${1:-}"
+  [[ -z "$arg" ]] && { echo "Usage: alacritty-theme <theme-name|path>" >&2; return 2; }
+
+  local themes_dir="$HOME/.config/alacritty/themes/themes"
+  local dst="$HOME/.config/alacritty/themes/active.toml"
+  local src
+
+  # If user passed a path, use it. Otherwise treat it as a theme name.
+  if [[ "$arg" == /* ]]; then
+    src="$arg"
+  else
+    # Strip a trailing .toml if they included it
+    arg="${arg%.toml}"
+    src="$themes_dir/${arg}.toml"
+  fi
+
+  [[ -r "$src" ]] || { echo "Theme not found: $src" >&2; return 1; }
+
+  ln -sf "$src" "$dst"
+  touch "$dst"
+}
